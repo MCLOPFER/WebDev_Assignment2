@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": ".eleventy.js",
+  "dependencies": {
+		"@11ty/eleventy": "^2.0.1",
+    "@enhance/eleventy-plugin": "^1.0.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm install @11ty/eleventy @enhance/eleventy-plugin"
+    "build": "eleventy"
   },
   "keywords": [],
   "author": "",
