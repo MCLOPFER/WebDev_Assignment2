@@ -11,6 +11,60 @@ document.addEventListener("DOMContentLoaded", () => {
     // Printing title where id: cityFocusTitle 
     document.getElementById("cityFocusTitle").innerHTML = title;
 
+    // Getting current Date
+    let date = new Date();
+
+    // Getting the current hour to use later as an index for the weather_data
+    let currentHour = date.getHours();
+
+    // Getting the local time zone
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    // Getting the current time in a short 24hr format
+    const currentTime = date.toLocaleTimeString('en', {timeStyle: 'short', hour12: false, timeZone: timezone})
+
+    // Creating a single variable(cityHourlyData) to store city specific hourly data
+    const cityDataHourly = weatherData[city + "_hourly"];
+    const cityHourlyData = cityDataHourly.hourly;
+
+    let current_temp = cityHourlyData.temperature_2m[currentHour];
+    let current_apparent_temp = cityHourlyData.apparent_temperature[currentHour];
+    
+    // If the prefered_temp_unit is set in local storage (if not set, the default is celsius)
+    if ( localStorage.getItem('prefered_temp_unit') ) {
+        // If the prefered_temp_unit set in local storage is fahrenheit
+        if (localStorage.getItem('prefered_temp_unit') === "fahrenheit"){
+            // Convert the temperture vars to fahrenheit
+            current_temp = utils.celciusToFahrenheit(current_temp)+"°F";
+            current_apparent_temp = utils.celciusToFahrenheit(current_apparent_temp)+"°F";
+        } else {
+            current_temp = current_temp+"°C";
+            current_apparent_temp = current_apparent_temp+"°C";
+        }
+    } else {
+        current_temp = current_temp+"°C";
+        current_apparent_temp = current_apparent_temp+"°C";
+    }
+
+    let current_wind_speed = cityHourlyData.wind_speed_10m[currentHour];
+
+    // If the prefered_speed_unit is set in local storage (if not set, the default is kph)
+    if ( localStorage.getItem('prefered_speed_unit') ) {
+        // If the prefered_speed_unit set in local storage is mph
+        if (localStorage.getItem('prefered_speed_unit') === "mph"){
+            // Convert the speed vars to mph
+            current_wind_speed = utils.kmpToMph(current_wind_speed)+"mph";
+        } else {
+            current_wind_speed = current_wind_speed+"kph";
+        }
+    } else {
+        current_wind_speed = current_wind_speed+"kph";
+    }
+
+    // Setting values for current time
+    document.getElementById("current_time").innerHTML = "Current Time: " + currentTime;
+    document.getElementById("current_temperature").innerHTML = current_temp;
+    document.getElementById("current_real_feel").innerHTML = current_apparent_temp;
+
     // Creating an array of days, as they'll be used to call the ids from cityFocusTile.njk
     const days = ["today", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 

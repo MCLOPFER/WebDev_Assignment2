@@ -12,6 +12,7 @@
                     <div class="content has-text-centered">
                         <h1 class="title is-1 is-spaced" id="cityFocusTitle"></h1>
                         <h2 class="subtitle is-3">Today's Forecast</h2>
+                        <h2 class="subtitle is-3" id="current_time"></h2>
                     </div>
                     <hr>
                     {# Creating a button from the today large info box, to navigate to hourly city focus #}
@@ -27,6 +28,9 @@
                             </div>
                             <div class="column is-vcentered mt-6">
                                 <div class="box has-text-centered has-background-black has-text-white">
+                                    <p class="is-size-5 is-uppercase">Current temperature</p>
+                                    <p class="is-size-2" id="current_temperature"></p>
+                                    <hr>
                                     <p class="is-size-5 is-uppercase">Max temperature</p>
                                     <p class="is-size-2" id="today_max_temp"></p>
                                     <hr>
@@ -36,10 +40,13 @@
                             </div>
                             <div class="column is-vcentered mt-6">
                                 <div class="box has-text-centered has-background-black has-text-white">
+                                    <p class="is-size-5 is-uppercase">Current real feel</p>
+                                    <p class="is-size-2"id="current_real_feel"></p>
+                                    <hr>
                                     <p class="is-size-5 is-uppercase">Wind speed</p>
                                     <p class="is-size-2"id="today_wind_speed"></p>
                                     <hr>
-                                    <p class="is-size-5 is-uppercase">Rain Probabiility</p>
+                                    <p class="is-size-5 is-uppercase">Rain probabiility</p>
                                     <p class="is-size-2"id="today_precipitation_probability"></p>
                                 </div>
                             </div>
