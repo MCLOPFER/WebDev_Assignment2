@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include "head.njk" %}
+        <script type="module" src="/js/pages/home.js"></script>
+    </head>
+    <body>
+        {# Setting page = "home" for the njk if statement (making the active page visible) in navbar.njk #}
+        {% set page = "home" %}
+        {% include "navbar.njk" %}
+        <main>
+            <section class="section">
+                <div class="container has-text-centered"> 
+                    <h2 class="subtitle is-3 has-text-weight-bold">Your favourite cities forecast for today</h2>
+                    <hr>
+                    <h2 class="subtitle is-size-4 has-text-centered">To change your favourite cities, check the settings page</h2>
+                    <div class="columns is-desktop is-multiline">
+                        {# Creating an array of cities to iterate over to create a city tile using the njk template (cityTile.njk) #}
+                        {% set cities = ["amsterdam", "berlin", "copenhagen", "cork", "new_york", "paris", "san_francisco", "tromso", "waterford"] %}
+                        {# For each element(city) of the cities array create an intance of cityFavSwitch #}
+                        {% for city in cities %}
+                        {% include 'cityTile.njk' %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </main>
+        {% include "footer.njk" %}
+    </body>
+</html>

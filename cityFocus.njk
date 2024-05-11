@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include "head.njk" %}
+        <script type="module" src="/js/pages/cityFocus.js"></script>
+    </head>
+    <body>
+        {% include "navbar.njk" %}
+        <main>
+            <section class="section">
+                <div class="container has-text-centered">
+                    <div class="content has-text-centered">
+                        <h1 class="title is-1 is-spaced" id="cityFocusTitle"></h1>
+                        <h2 class="subtitle is-3">Today's Forecast</h2>
+                    </div>
+                    <hr>
+                    {# Creating a button from the today large info box, to navigate to hourly city focus #}
+                    <a href="/hourlyCityFocus" type="button">
+                        <p class="mb-5 is-size-4 has-text-black">Click here for an hourly forecast for the next 24 hours</p>
+                        <div class="columns has-background-dark">
+                            <div class="column">
+                                <div class="card has-text-centered">
+                                    <div class="card-image has-background-dark">
+                                        <div style="width:90%; height:20%" id="today_weather_code_image"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-vcentered mt-6">
+                                <div class="box has-text-centered has-background-black has-text-white">
+                                    <p class="is-size-5 is-uppercase">Max temperature</p>
+                                    <p class="is-size-2" id="today_max_temp"></p>
+                                    <hr>
+                                    <p class="is-size-5 is-uppercase">Min temperature</p>
+                                    <p class="is-size-2" id="today_min_temp"></p>
+                                </div>
+                            </div>
+                            <div class="column is-vcentered mt-6">
+                                <div class="box has-text-centered has-background-black has-text-white">
+                                    <p class="is-size-5 is-uppercase">Wind speed</p>
+                                    <p class="is-size-2"id="today_wind_speed"></p>
+                                    <hr>
+                                    <p class="is-size-5 is-uppercase">Rain Probabiility</p>
+                                    <p class="is-size-2"id="today_precipitation_probability"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <hr>
+                    <hr>
+                    <hr>
+                    <table class="table is-striped is-fullwidth">
+                        <thead class="is-size-5 has-text-centered">
+                            <tr class="has-background-black">
+                                <th></th>
+                                <th class="has-text-white has-text-centered">Max Temperature</th>
+                                <th class="has-text-white has-text-centered">Min Temperature</th>
+                                <th class="has-text-white has-text-centered">Wind Speed</th>
+                                <th class="has-text-white has-text-centered">Rain Probability</th>
+                            </tr>
+                        </thead>
+                        <tbody class="is-size-5">
+                            {# Creating an array of days to iterate over to create a city focus tile using the njk template (cityFocusTile.njk) #}
+                            {% set days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday"] %}
+                            {# For each element(day) of the days array create an intance of cityFocusTile #}
+                            {% for day in days %}
+                            {% include 'cityFocusTile.njk' %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+        {% include "footer.njk" %}
+    </body>
+</html>

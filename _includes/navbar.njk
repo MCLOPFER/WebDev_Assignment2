@@ -1,0 +1,46 @@
+<header>
+    <nav class="navbar is-white" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="navbar-brand is-justify-content-center mt-6">
+                <figure class="image is-128x128" >
+                    <img src="/images/logo.png"/> 
+                </figure>
+                <a href="/index" >
+                    <span class="box title is-2 has-text-info has-text-weight-bold is-invisible-mobile">(Whether)Weather</span>
+                </a>
+
+                {# Creating a responsive navbar with hamburger menu when the screen gets smaller #}
+                <div class="navbar-burger" data-target="navbarMenu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="navbar-menu" id="navbarMenu">
+                <div class="navbar-end is-size-3 has-text-weight-semibold">
+                    
+                    {# Setting the "is-active" class in the navbar through the njk if statement #}
+                    {% if page == "home" %}
+                    <a id="navbar-home" href="/home" class="navbar-item has-text-warning is-size-1">Home</a>
+                    {% else %}
+                    <a id="navbar-home" href="/home" class="navbar-item">Home</a>
+                    {% endif %}
+
+                    {% if page == "dashboard" %}
+                    <a id="navbar-dashboard" href="/index" class="navbar-item has-text-warning is-size-1">Dashboard</a>
+                    {% else %}
+                    <a id="navbar-dashboard" href="/index" class="navbar-item">Dashboard</a>
+                    {% endif %}
+
+                    {% if page == "settings" %}
+                    <a id="navbar-settings" href="/settings" class="navbar-item has-text-warning is-size-1">Dashboard</a>
+                    {% else %}
+                    <a id="navbar-settings" href="/settings" class="navbar-item">Settings</a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

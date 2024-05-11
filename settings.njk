@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include "head.njk" %}
+        <script type="module" src="/js/pages/settings.js"></script>
+        {# Setting the switch button #}
+        <link rel="stylesheet" href="/css/bulma-extensions.min.css"/> 
+    </head>
+    <body>
+        {# Setting page = "settings" for the njk if statement (making the active page visible) in navbar.njk #}
+        {% set page = "settings" %}
+        {% include "navbar.njk" %}
+        <main>
+            <section class="section">
+                <div class="card container">
+                    <div class="card-header-title is-centered is-size-3">Select your favourites cities</div>
+                    <div class="card-content has-background-dark">
+                        <div class="columns is-multiline">
+                            {# Creating an array of cities to iterate over to create the switch button for each city using the njk template (cityFavSwitch.njk) #}
+                            {% set cities = ["amsterdam", "berlin", "copenhagen", "cork", "new_york", "paris", "san_francisco", "tromso", "waterford"] %}
+                            {# For each element(city) of the cities array create an intance of cityFavSwitch #}
+                            {% for city in cities %}
+                            {% include 'cityFavSwitch.njk' %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card container">
+                    <div class="card-header-title is-centered is-size-3">Customize Website</div>
+                    <div class="card-content has-background-dark">
+                        <div class="columns has-text-weight-bold has-text-white">
+                            <div class="column is-offset-one-quarter">
+                                <p class="pb-4 pl-1">Speed Units</p>
+                                <div class="select">
+                                    <select class="pl-5" id="favSpeed">
+                                        <option value="mph">MPH</option>
+                                        <option selected="selected" value="kph">KPH</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <p class="pb-4">Temperature Scale</p>
+                                <div class="select">
+                                    <select class="ml-2" id="favTemp">
+                                        <option selected="selected" value="celsius">Celsius</option>
+                                        <option value="fahrenheit">Fahrenheit</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        {% include "footer.njk" %}
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<div id="{{ city }}_tile" class="column is-half">
+    {# By dynamicly setting the variable {{ city }} on this element I can access it in javascript by using its unique id #}
+    <a href="/cityFocus/?city={{ city }}" type="button" class="button is-fullwidth has-background-dark">
+        <div class="columns is-d
+        esktop is-vcentered">
+            <div class="column is-half">
+                <div class="box has-text-weight-bold has-background-dark has-text-white">
+                    <h1 class="title is-3 is-uppercase has-text-white" id="{{ city }}"></h1>
+                </div>
+            </div>
+            <div class="column">
+                <div class="is-size-1">
+                    <div id="{{ city }}_today_weather_code_image"></div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="box has-background-dark has-text-white">
+                    <div class="content">
+                        <dl>
+                            <dt class="is-uppercase">Max</dt>
+                            <dd class="is-size-3" id="{{ city }}_today_max_temp"></dd>
+                            <dt class="is-uppercase">Min</dt>
+                            <dd class="is-size-3" id="{{ city }}_today_min_temp"></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+
