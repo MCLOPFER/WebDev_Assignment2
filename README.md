@@ -74,7 +74,7 @@ You can now access the website locally at http://localhost:8080/
 - Git
 
 ## How access it
-You would just need internet and a device where you can open the following link: 
+You would just need internet and a device where you can open the following link: https://whetherweather20108907.netlify.app/
 
 ## Directory structure
 ``` console
